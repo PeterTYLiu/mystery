@@ -1,0 +1,27 @@
+.got-it {
+  height: 42px;
+  border: none;
+  color: white;
+  background: rgb(156, 156, 156);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.got-it:hover {
+  background: rgb(131, 131, 131);
+}
+img#victim {
+  filter: grayscale(100%);
+  position: relative;
+}
+img#victim:after {
+  content: "RIP";
+  font-size: large;
+  color: darkred;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}

@@ -1,9 +1,4 @@
-type suspect = {
-  name: string;
-  item: string;
-  location: string;
-  guilty: boolean;
-};
+import { suspect } from "../types/suspect";
 
 export const generateGame = (
   people: string[],
@@ -39,6 +34,8 @@ export const generateGame = (
         item: "",
         location: "",
         guilty: false,
+        suspicion: "",
+        talkative: true,
       };
       if (personInList == killer) {
         suspect.item = weapon;
@@ -54,6 +51,18 @@ export const generateGame = (
     }
   });
 
+  // Assign suspicions to each person
+  suspects.forEach((suspect, index) => {
+    let suspectsInOtherPlaces = suspects.filter(
+      (innerSuspect) => innerSuspect.location !== suspect.location
+    );
+
+    suspects[index].suspicion =
+      suspectsInOtherPlaces[
+        Math.floor(Math.random() * suspectsInOtherPlaces.length)
+      ].name;
+  });
+
   // Assign items to innocent people
   innocentItems.forEach((item) => {
     let suspectIndex = Math.floor(Math.random() * suspects.length);
@@ -63,7 +72,7 @@ export const generateGame = (
     suspects[suspectIndex].item = item;
   });
 
-  let statement = `${killer} killed ${victim} at ${crimeScene} with the ${weapon.toLowerCase()}`;
+  // let statement = `${killer} killed ${victim} at ${crimeScene} with the ${weapon.toLowerCase()}`;
 
   return suspects;
 };

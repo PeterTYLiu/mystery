@@ -308,7 +308,7 @@ function App() {
                   role="button"
                   tabIndex={0}
                   style={{
-                    background: `url('/images/${suspect.name.toLowerCase()}.png')`,
+                    background: `url('./images/${suspect.name.toLowerCase()}.png')`,
                     backgroundSize: "contain",
                     backgroundPosition: "center",
                     height: "80px",
